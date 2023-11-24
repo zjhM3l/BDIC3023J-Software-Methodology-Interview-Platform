@@ -1,0 +1,76 @@
+/*set the style of a button*/
+#out,
+.outBtn{
+    position: absolute;
+    left: -900px;
+    top: -460px;
+    font-size: 20px;
+    background-color: #1655f6;
+    color: white;
+    border:none;
+    border-radius: 50px;
+    width: 60px;
+    height: 60px;
+    z-index: 10;
+}
+
+/*set the style when the pointer is above the button*/
+button.outBtn:hover {
+  background-color: #1264bd;
+}
+
+/*set the style of a button*/
+button.jumpBtn{
+    position: relative;
+    margin-top: 185px;
+    margin-left: -30px;
+    background-color: #167af6;
+    border: none;
+    color: white;
+    padding: 14px 15px;
+    font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    border-radius: 2px;
+    z-index: 10;
+}
+
+/*set the style when the pointer is above the button*/
+button.jumpBtn:hover {
+  background-color: #1264bd;
+}
+
+.new1{
+    position: absolute;
+    visibility: hidden;
+}
+
+button.jumpBtn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+button.jumpBtn span:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+button.jumpBtn:hover span {
+  padding-right: 25px;
+}
+
+button.jumpBtn:hover span:after {
+  opacity: 1;
+  right: 0;
+}

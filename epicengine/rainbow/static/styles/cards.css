@@ -1,0 +1,178 @@
+/*set the basic style of the whole page*/
+*,
+*::before,
+*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    position: relative;
+    text-decoration: none;
+}
+
+html,body{
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+/*set the style of the four cards*/
+.cards{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+/*set a background picture to make the card darker*/
+.dark{
+    position: absolute;
+    background-image: url("../images/black.png");
+    opacity: 0.15;
+    width: 100%;
+    height: 100%;
+    z-index: 8;
+    background-size: cover;
+}
+
+.card{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+}
+
+.card::before{
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/*add four pictures as the background pictures*/
+.card-01{
+    background-image: url("../images/Resume.jpg");
+    width: 100%;
+    height: 100%;
+}
+
+.card-02{
+    background-image: url("../images/Meeting.jpg");
+    width: 100%;
+    height: 100%;
+}
+
+.card-03{
+    background-image: url("../images/Calender.jpg");
+    width: 100%;
+    height: 100%;
+}
+
+/*set the style of the card contents*/
+.contents{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80%;
+    padding-top: 8rem;
+    color: #fff;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    z-index: 100;
+}
+
+.contents img{
+    width: 8.5rem;
+    height: 8.5rem;
+    margin-bottom: 6.6rem;
+}
+
+.contents h3{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 3.6rem;
+    margin-bottom: 3.6rem;
+}
+
+.contents .line{
+    width: 5rem;
+    border-bottom: 1px solid #fff;
+    margin-bottom: 3.6rem;
+}
+
+.contents p{
+    font-weight: lighter;
+    font-size: 1.4rem;
+    line-height: 1.7rem;
+    margin-bottom: auto;
+    max-width: 30rem;
+}
+
+/*set the style of the button*/
+.button{
+    padding: 1rem 5rem;
+}
+
+.button::after{
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    transition: all .3s cubic-bezier(.5, .01, .08, .91);
+
+    transform: rotateY(90deg);
+}
+
+.button span{
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1.8rem;
+    transition: all .3s cubic-bezier(.5, .01, .08, .91);
+    display: inline-block;
+}
+
+.button span::after{
+    content: ">";
+    display: inline-block;
+    transition: all .3s cubic-bezier(.5, .01, .08, .91);
+
+    transform: translateX(-16px);
+    opacity: 0;
+}
+
+/*set the style of the contents in the card
+and the style when the pointer is on them*/
+.contents > *{
+    transition: all .3s cubic-bezier(.5, .01, .08, .91);
+}
+
+.contents:hover :not(:last-child){
+    transform: translateY(-10px);
+}
+
+.contents:hover .line{
+    transform: rotateZ(90deg);
+    width: 2.5rem;
+}
+
+.contents:hover .button::after{
+    transform: rotateY(0);
+}
+
+.contents:hover .button span{
+    transform: translateX(-10px);
+}
+
+.contents:hover .button span::after{
+    transform: translateX(16px);
+    opacity: 1;
+}
+

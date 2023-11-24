@@ -1,0 +1,98 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+.app-left {
+    height: 100%;
+    width: 70%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #fffff1;
+    padding-top: 20px;
+}
+
+.board-control {
+    position: fixed;
+    background-color: #000000;
+    bottom: 0;
+    width: 100%;
+}
+
+.board {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.app-right {
+    height: 100%;
+    width: 30%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #eeeeee;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    overflow-x: hidden;
+}
+
+
+
+  .fixed-action-btn{
+      left: 23px;
+      width: 5%;
+  }
+
+  /*chat*/
+  .BasicChat {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .chatbox {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #dddddd;
+    padding-top: 50px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-left: 80px;
+  }
+
+  #message-input-container{
+      position: absolute;
+      bottom:10px;
+      left: 10px;
+      width: 95%;
+      background-color: #ffffff;
+      padding: 4px;
+      border-radius: 4px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  }
+
+  #color-btn{
+      background-color: #f44336
+  }
+
+  .message-holder{
+      background-color: #ffffff;
+      border-radius: 4px;
+      padding: 4px;
+      display:inline-block;
+      left: 0;
+      margin-bottom: 8px;
+  }
+
+  .sender-id{
+    font-weight: bold;
+    font-size: 0.75em;
+  }
+
+  .message-content{
+      font-size: 0.8em;
+  }

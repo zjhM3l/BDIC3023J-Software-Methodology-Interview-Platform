@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <!--Importing CSS files-->
+    <link rel="stylesheet" href="../static/styles/cards.css">
+    <link rel="stylesheet" href="../static/styles/index.css">
+    <link rel="stylesheet" href="../static/styles/user.css">
+    <link rel="stylesheet" href="../static/styles/flash.css">
+    <link rel="shortcut icon" href="../static/images/logo.png">
+</head>
+<body>
+<div class="bg">
+
+        <div class="txt">Welcome to <br><span>Rainbow Catcher</span></div>
+
+        <!--show flash message-->
+        {% for message in get_flashed_messages()%}
+        <div id="alertMessage" class = "alert alert-warning">
+            <button type="button" class = "close" onclick="close_flash_message();">Close</button>
+            <strong class="inSize">{{ message }}</strong>
+        </div>
+        {% endfor %}
+
+        <!--judge whether the user is authorized and show different hints to these two situations-->
+        {% if user != None %}
+        <a href="{{ url_for('resume')}}"><button class="jumpBtn" id="log1"><span>Welcome,  {{ user.username }}</span></button></a>
+        <a href="{{ url_for('logout')}}"><button class="outBtn" id="out">logout</button></a>
+        {% else %}
+        <a href="{{ url_for('login')}}"><button class="jumpBtn" id="log"><span>Login / Register</span></button></a>
+        {% endif %}
+
+<!--        Set the click event. If the user clicks, the menu interface will be expanded-->
+        <div class="menu">
+            <div class="cross"  onclick="styleChange();clickOne();">
+                <span class="dash1"></span>
+                <span class="dash2"></span>
+            </div>
+            <div class="options">
+
+                <div class="dark"></div>
+<!--            Set four parts, corresponding to four functions respectively.
+                When the user clicks a part, it will jump to the corresponding interface -->
+                <section id="fourCards" class="cards">
+                    <div class="card card-01">
+                        <div class="contents">
+                            <img src="../static/images/Resume-icon.png" class="pic-01" alt="">
+                            <h3><a style="color: #111111" href="{{url_for('resume')}}">My Resume</a></h3>
+
+{#                            <p class="description">Check everything about you here or modify your personal information</p>#}
+                            <div class="button"><span>more</span></div>
+                        </div>
+                    </div>
+
+                    <div class="card card-02">
+                        <div class="contents">
+                            <img src="../static/images/Meeting-icon.png" alt="mycart-icon">
+                            <h3><a style="color: #111111" href="{{url_for('room')}}">Join Meeting</a></h3>
+
+{#                            <p class="description">Come and see what's in your shopping cart right now</p>#}
+                            <div class="button"><span>more</span></div>
+                        </div>
+                    </div>
+
+                    <div class="card card-03">
+                        <div class="contents">
+                            <img src="../static/images/Calender-icon.png" alt="shoppingnow-icon">
+                            <h3><a style="color: #111111" href="{{url_for('whiteboard')}}">WhiteBoard</a></h3>
+{#                            <p class="description">Go to the front page of the store and start your shopping</p>#}
+                            <div class="button"><span>more</span></div>
+                        </div>
+                    </div>
+
+                </section>
+            </div>
+            <div class="circle"></div>
+        </div>
+    </div>
+</body>
+<!--Detect when the user clicks to expand the menu, place the rest at the bottom of the menu,
+    and when the user clicks again, place it above the menu-->
+<script src="../static/js/Jquery.js" type="text/javascript" charset="utf-8"></script>
+<script src="../static/js/menuClick.js" type="text/javascript" charset="utf-8"></script>
+<script src="../static/js/buttonClick.js" type="text/javascript" charset="utf-8"></script>
+<script src="../static/js/flash.js" charset="utf-8"></script>
+<script src="../static/js/delete.js" charset="utf-8"></script>
+</html>

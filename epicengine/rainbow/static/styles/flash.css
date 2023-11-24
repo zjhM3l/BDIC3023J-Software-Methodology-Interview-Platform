@@ -1,0 +1,54 @@
+/*the style of the flash container*/
+.alert {
+    position: absolute;
+  padding: 15px 250px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+    margin-top: -40%;
+  z-index: 1000;
+}
+
+.alert-warning {
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+    z-index: 1000;
+}
+
+.inSize{
+  font-size: 20px;
+}
+
+.close {
+    font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
+  float: right;
+  font-size: 21px;
+  font-weight: bold;
+  line-height: 1;
+  color: #000;
+  border: none;
+    margin-left: 15px;
+  text-shadow: 0 1px 0 #fff;
+  filter: alpha(opacity=20);
+  opacity: .5;
+}
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+  filter: alpha(opacity=50);
+  opacity: .7;
+}
+
+@font-face {
+  font-family: 'arlrdbd';
+  src: url("../font/arlrdbd.ttf");
+}
+
+.log{
+  margin-top: -105%;
+}
+
+
+

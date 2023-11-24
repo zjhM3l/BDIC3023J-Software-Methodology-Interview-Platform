@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="../static/whiteboard/examples/basic/css/materialize.min.css" media="screen,projection"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link type="text/css" rel="stylesheet" href="../static/whiteboard/examples/basic/css/style.css" media="screen,projection"/>
+</head>
+
+<body>
+    <script type="text/javascript" src="../static/whiteboard/examples/basic/js/materialize.min.js"></script>
+    <script src="https://cdn.pubnub.com/pubnub-3.14.1.min.js"></script>
+    <link rel="stylesheet" href="../static/whiteboard/examples/basic/css/style.css">
+{#    <script src="../whiteboard/bower_components/angular/angular.js"></script>#}
+{#    <script src="../whiteboard/bower_components/rltm/web/rltm.js"></script>#}
+    <script src="../static/whiteboard/angular-chat.js"></script>
+    <!-- add module to angular -->
+    <script>
+        var chat = angular.module( 'BasicChat', ['chat'] );
+    </script>
+    <!-- configuration -->
+    <script>
+        angular.module('chat').constant('config', {
+            rltm: {
+                service: "pubnub",
+                config: {
+                    publishKey: "pub-c-42b64543-eb57-40df-9ef1-43792113b828",
+                    subscribeKey: "sub-c-5e2b72ec-ccc4-11e8-b5de-7a9ddb77e130"
+                }
+            }
+        });
+    </script>
+    <!-- controller -->
+    <script>
+        chat.controller( 'chat', [ 'Messages', '$scope', function( Messages, $scope ) {
+        
+            // Message Inbox
+            $scope.messages = [];
+        
+            // Receive Messages
+            Messages.receive(function(message) {
+                $scope.messages.push(message);
+            });
+        
+            // Send Messages
+            $scope.send = function() {
+                Messages.send({
+                    data: $scope.textbox,
+                    name: "Amarnath"
+                });
+                $scope.textbox='';
+            };
+        
+        }]);
+        </script>
+
+    <div class = 'app-left'>
+        <div class = 'board' id = 'boardid' onresize="resizer()">
+            <canvas id="drawCanvas">Canvas not working? :-/</canvas>
+        </div>
+        <div class="fixed-action-btn">
+            <a class="btn-floating btn-large" id="color-btn">
+              <i class="small material-icons">mode_edit</i>
+            </a>
+            <ul>
+              <li><a class="btn-floating btn-small red" onclick="changer('#f44336')"></a></li>
+              <li><a class="btn-floating btn-small yellow" onclick="changer('#ffeb3b')"></a></li>
+              <li><a class="btn-floating btn-small green"  onclick="changer('#4caf50')"></a></li>
+              <li><a class="btn-floating btn-small blue" onclick="changer('#2196f3')"></a></li>
+              <li><a class="btn-floating btn-small pink" onclick="changer('#d81b60')"></a></li>
+              <li><a class="btn-floating btn-small purple" onclick="changer('#8e24aa')"></a></li>
+              <li><a class="btn-floating btn-small black" id="link" onclick="save()"><i class="small material-icons">archive</i></a></li>
+              <li><a class="btn-floating btn-small black" id="link" onclick="changer('erase')"><i class="small material-icons">chrome_reader_mode</i></a></li>
+            </ul>
+        </div> 
+    </div>
+
+    <div class = 'app-right'>
+        <div ng-app="BasicChat" class="BasicChat">
+            <div ng-controller="chat" class = "chatbox" style="padding: 10px">
+                <div ng-repeat="message in messages">
+                    <div class="message-holder">
+
+                    </div>
+                </div>
+                <div id = 'message-input-container'>
+                    <form ng-submit="send()">
+                        <input type='text' ng-model="textbox" id='message-input'>
+                    </form>
+                </div>
+            </div>
+        </div>
+   </div>
+      <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var elems = document.querySelectorAll('.fixed-action-btn');
+                var instances = M.FloatingActionButton.init(elems, options);
+            });
+
+            document.addEventListener('DOMContentLoaded', function() {
+                var elems = document.querySelectorAll('.fixed-action-btn');
+                var instances = M.FloatingActionButton.init(elems, {
+                direction: 'right',
+                hoverEnabled: false
+    });
+  });
+      </script>
+    <script type="text/javascript" src="../static/whiteboard/examples/basic/app.js"></script>
+</body>
+
+</html>
